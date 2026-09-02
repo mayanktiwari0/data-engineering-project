@@ -87,9 +87,38 @@ Run dbt Tests
 
 The Airflow DAG ensures that the transformation and data-quality steps execute in the correct order.
 
-### 5. Analytics
+### 5. Analytics & Power BI Dashboard
 
-The final Snowflake tables are connected to Power BI using DirectQuery to build analytical dashboards and KPIs.
+The final Snowflake analytics layer is connected to Power BI using **DirectQuery** to provide interactive e-commerce reporting.
+
+The Power BI dashboard includes:
+
+#### Key Performance Indicators
+
+- Total Revenue
+- Total Orders
+- Total Customers
+- Average Order Value
+- Total Payments
+
+#### Business Analysis
+
+- Order Status Breakdown
+- Items Sold by Product
+- Revenue Trend over Time
+- Items Sold by Category
+- Payment Status Breakdown
+- Revenue by State
+
+#### Interactive Filters
+
+- Order Date
+- Product Category
+- Order Status
+
+The dashboard allows users to interactively filter the data and analyze revenue, orders, customers, products, payments and geographic performance.
+
+**Power BI file:** ecommerce_dashboard.pbix
 
 ## dbt Data Model
 
