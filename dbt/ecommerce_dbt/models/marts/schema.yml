@@ -1,0 +1,93 @@
+version: 2
+
+models:
+
+  - name: dim_customers
+    description: "Customer dimension used for business reporting"
+
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+        data_tests:
+          - not_null
+          - unique
+
+
+  - name: dim_products
+    description: "Product dimension used for business reporting"
+
+    columns:
+      - name: product_id
+        description: "Unique identifier for each product"
+        data_tests:
+          - not_null
+          - unique
+
+
+  - name: fct_orders
+    description: "Fact table containing order-level business metrics"
+
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        description: "Customer who placed the order"
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: customer_id
+
+
+  - name: fct_order_items
+    description: "Fact table containing product-level order transactions"
+
+    columns:
+      - name: order_item_id
+        description: "Unique identifier for each order item"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: order_id
+        description: "Order associated with the item"
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fct_orders')
+                field: order_id
+
+      - name: product_id
+        description: "Product associated with the item"
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_products')
+                field: product_id
+
+
+  - name: fct_payments
+    description: "Fact table containing payment-level transactions"
+
+    columns:
+      - name: payment_id
+        description: "Unique identifier for each payment"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: order_id
+        description: "Order associated with the payment"
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fct_orders')
+                field: order_id

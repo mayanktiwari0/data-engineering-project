@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+
+  - name: ecommerce
+    description: "E-commerce data loaded into Snowflake by Fivetran"
+
+    database: FIVETRAN
+    schema: S3_ECOMMERCE_DATA
+
+    tables:
+
+      - name: customers
+        description: "Raw customer information"
+
+      - name: orders
+        description: "Raw order information"
+
+      - name: order_items
+        description: "Raw line-item details for each order"
+
+      - name: payments
+        description: "Raw payment transactions"
+
+      - name: products
+        description: "Raw product information"

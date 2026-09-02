@@ -1,0 +1,11 @@
+{{ config(materialized='table') }}
+
+select
+    payment_id,
+    order_id,
+    payment_date,
+    payment_method,
+    payment_status,
+    amount
+
+from {{ ref('stg_payments') }}

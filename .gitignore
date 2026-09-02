@@ -1,0 +1,28 @@
+# Secrets
+**/.env
+*.env
+
+# Python
+**/__pycache__/
+*.py[cod]
+*.pyo
+
+# Airflow - ignore local/source installation
+airflow/*
+!airflow/docker-compose.yaml
+!airflow/dags/
+airflow/dags/*
+!airflow/dags/ecommerce_pipeline.py
+airflow3_backup/
+
+# dbt
+dbt/**/target/
+dbt/**/logs/
+dbt/**/dbt_packages/
+
+# Local/editor files
+**/.vscode/
+**/.idea/
+
+# Archives
+*.zip
